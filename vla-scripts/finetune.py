@@ -371,3 +371,24 @@ def finetune(cfg: FinetuneConfig) -> None:
 
 if __name__ == "__main__":
     finetune()
+
+
+
+'''
+torchrun --standalone --nnodes 1 --nproc-per-node 1 vla-scripts/finetune.py \
+  --vla_path "openvla/openvla-7b" \
+  --data_root_dir /home/rvi/openvla \
+  --dataset_name my_dataset \
+  --run_root_dir /home/rvi/openvla/ckpt_v2 \
+  --adapter_tmp_dir /home/rvi/openvla/test_log \
+  --lora_rank 32 \
+  --batch_size 1 \
+  --grad_accumulation_steps 1 \
+  --learning_rate 5e-4 \
+  --image_aug True \
+  --wandb_project openvla \
+  --wandb_entity joonsu0109 \
+  --save_steps 5000 \
+  --max_steps 50000 \
+  --save_latest_checkpoint_only False
+'''
